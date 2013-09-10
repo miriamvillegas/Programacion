@@ -1,0 +1,31 @@
+// Programacion.cpp : Defines the entry point for the console application.
+//Autor: Miriam Villegas
+//Fecha: 10/09/13
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+
+using namespace std;
+
+
+int main()
+{
+
+		float A,B,C,total;
+
+	cout<<"ingresar primer monto de venta semanal: ";
+	cin>>A;
+	cout<<"ingresar segundo monto de venta semanal:";
+	cin>>B;
+	cout<<"ingresar tercer monto de venta semanal:";
+	cin>>C;
+
+	total=(A+B+C)*4;
+
+		cout<<"el ingreso total al mes es de: "<<total;
+
+	getch();
+
+	return 0;
+}
