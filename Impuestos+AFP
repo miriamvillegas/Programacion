@@ -11,7 +11,9 @@ using namespace std;
 
 void main()
 
-{cout<<"   ***** CALCULO DEL PAGO DE IMPUESTOS ***** \n \n" ;
+{
+	cout<<"   ***** CALCULO DEL PAGO DE IMPUESTOS ***** \n \n" ;
+
 	float sueldo, sueldobase, impuesto, AFP;
 
 	
@@ -23,13 +25,15 @@ void main()
 		if(sueldo>2*sueldobase) 
 		
 		{impuesto=sueldo*0.13;
-		AFP=sueldo*0.12;}
+		AFP=sueldo*0.12;
+		cout<<"el impuesto a pagar es: "<<impuesto <<"\n";
+		cout<<"el AFP a pagar es: "<<AFP;
+}
 		
 		else
 		{cout<<"no paga impuestos ni AFP" ; }
 
-		cout<<"el impuesto a pagar es: "<<impuesto <<"\n";
-		cout<<"el AFP a pagar es: "<<AFP;
+	
 
 	getch();
 
