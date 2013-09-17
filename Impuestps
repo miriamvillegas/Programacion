@@ -1,0 +1,33 @@
+// Impuestos.cpp : Defines the entry point for the console application.
+// Autor: Miriam Villegas
+// Fecha: 17/09/2013
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+
+using namespace std;
+
+
+int main()
+
+{
+	float sueldo, sueldobase, impuesto;
+
+	cout<<"ingrese el sueldo minimo: ";
+		cin>>sueldobase;
+		cout<<"ingrese el sueldo para calcular su impuesto: ";
+		cin>>sueldo;
+
+		if(sueldo>2*sueldobase) 
+		{impuesto=sueldo*0.13;
+		}
+		else
+			impuesto=0;
+
+		cout<<"el impuesto a pagar es: "<<impuesto;
+
+			getch();
+
+	return 0;
+}
