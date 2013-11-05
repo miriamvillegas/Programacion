@@ -1,0 +1,53 @@
+// REFERENCIAS.cpp : Defines the entry point for the console application.
+// AUTOR: Miriam Villegas
+// FECHA: 05/11/2013
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+
+using namespace std;
+
+void poten (float x, int n, float &pot);
+
+void facto (int n, int &fac);
+
+
+void main ()
+{
+	int n, i, f;
+	float S=0, x, p;
+	
+	cout<<"ingrese la base 'x' para la secuencia: ";
+	cin>> x;
+	cout<<"ingrese el 'N' para la secuencia: ";
+	cin>> n;
+
+	for (i=1; i<=n ; i++)
+	{
+      poten(x,i,p);
+	  facto(i,f);
+	  S=S+(p/f);
+	}
+	cout<<"la sumatoria final es :   "<<S;
+
+	getch ();
+}
+
+void poten (float x, int n, float &pot)
+{
+	pot=1;
+	
+	for (int i=1; i<=n ; i++)
+
+		pot=pot*x;
+}
+
+void facto (int n, int &fac)
+{
+	fac=1;
+
+	for (int i=1; i<=n; i++)
+
+		fac=i*fac;
+}
