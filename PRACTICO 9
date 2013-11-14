@@ -1,0 +1,621 @@
+UPSA
+
+
+
+
+
+
+PRACTICOS DE PROGRAMACION
+
+PARCIAL II
+
+PRACTICO 4
+
+
+
+
+Docente: Karem Infantas
+
+
+
+INTEGRANTES:
+
+
+
+
+
+
+
+Valeria Araujo                                                   2013115148
+Juan Francisco Cabrera                                           2013116551
+Miriam Villegas                                                  2013115474
+
+
+
+
+
+
+
+
+
+
+
+PRACTICO Nº 09
+IS 110 Introducción a la programación
+Funciones 
+
+Escribir programas en lenguaje C para cada uno de los siguientes problemas.
+1.	Construir una función POTEN (y, y), para calcular la potencia x y de dos números reales cualesquiera.
+	float potencia (float x,float y)
+	{
+		int j;
+		float pot=1;
+
+		for(j=1;j<=y;j++)
+	
+			pot=pot*x;
+
+		return pot;
+	 }
+
+
+2.	Construir una función FAC(n) para calcular el factorial de un entero.
+	int factorial (int n)
+	{
+		int j, fact=1;
+	
+		for (j=1;j<=n;j++)
+			fact=fact*j;
+	
+		return fact;
+	}
+
+3.	Construir un programa, que mediante funciones, para hallar la suma de la siguiente serie, dados X y N enteros positivos:
+    x1         x2         x3        x4                 xN
+S =           +          +          +          + . . . + 
+          1!        2!          3!        4!                 N!
+
+// FUNCIONES 3.cpp : Defines the entry point for the console application.
+// AUTORA: Miriam Villegas
+// FECHA: 12/11/2013
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+
+using namespace std;
+
+float potencia (float x,int i);
+int factorial (int i);
+
+
+void main ()
+{
+	int n, i;
+	float S=0, x;
+
+	cout<<"ingrese la base de la sumatoria: ";
+	cin>>x;
+	cout<<"ingrese el exponente: ";
+	cin>>n;
+
+	for(i=1;i<=n;i++)
+
+		S=S+potencia(x,i)/factorial(i);
+
+
+	cout<<"la sumatoria final es de:  "<<S;
+
+	getch();
+}
+
+float potencia (float x,int i)
+{
+	int j;
+	float pot=1;
+
+	for(j=1;j<=i;j++)
+	
+		pot=pot*x;
+
+	return pot;
+}
+
+int factorial (int i)
+{
+	int j, fact=1;
+
+	for (j=1;j<=i;j++)
+		fact=fact*j;
+	
+	return fact;
+}
+4.	Construir un programa, que mediante funciones, halle la suma de la siguiente serie, dados X y N enteros positivos:
+    x1         x3         x5        x7                  xN
+S =           -          +          -          +/- . . .  
+                1!        3!          5!        7!                  N!
+// FUNCIONES 4.cpp : Defines the entry point for the console application.
+// AUTORA: Miriam Villegas
+// FECHA: 12/11/2013
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+
+using namespace std;
+
+float potencia (float x,int i);
+int factorial (int i);
+
+
+void main ()
+{
+	int n, i, signo=-1;
+	float S=0, x;
+
+	cout<<"ingrese la base de la sumatoria: ";
+	cin>>x;
+	cout<<"ingrese el exponente: ";
+	cin>>n;
+
+	for(i=1;i<=n;i++)
+	{
+		signo=signo*-1;
+
+		S=S+(signo*potencia(x,i)/factorial(i));
+	}
+
+	cout<<"la sumatoria final es de:  "<<S;
+
+	getch();
+}
+
+float potencia (float x,int i)
+{
+	int j;
+	float pot=1;
+
+	for(j=1;j<=i;j++)
+	
+		pot=pot*x;
+
+	return pot;
+}
+
+int factorial (int i)
+{
+	int j, fact=1;
+
+	for (j=1;j<=i;j++)
+		fact=fact*j;
+	
+	return fact;
+}
+5.	Construir una función que calcule la solución de un sistema de dos ecuaciones con 2 variables de la forma:
+Ax + By + C = 0
+Dx + Ey + F = 0
+El procedimiento debe recibir como parámetros de entrada los 6 coeficientes de la ecuación, y dar como parámetros de salida la solución (X, Y). Por ejemplo una llamada sería la siguiente: SISTEMA (1, 2, 3, 4, 5, 6, X, Y), correspondiente al sistema:
+ x + 2y + 3 = 0
+4x + 5y + 6 = 0 
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+
+using namespace std;
+
+void solucion (float a,float b,float c,float d,float e,float f,float &x,float &y);
+int main()
+{
+	float a,b,c,d,e,f,x,y;
+	cout<< "Ingrese la variable a de la ecuacion ax+by+c=0: \n";
+	cin>> a;
+	cout<< "Ingrese la variable b de la ecuacion ax+by+c=0: \n";
+	cin>> b;
+	cout<< "Ingrese la variable c de la ecuacion ax+by+c=0: \n";
+	cin>> c;
+	cout<< "Ingrese la variable d de la ecuacion dx+ey+f=0: \n";
+	cin>> d;
+	cout<< "Ingrese la variable e de la ecuacion dx+ey+f=0: \n";
+	cin>> e;
+	cout<< "Ingrese la variable f de la ecuacion dx+ey+f=0: \n";
+	cin>> f;
+	solucion (a,b,c,d,e,f,x,y);
+	x=x;
+	y=y;
+	cout<<"La solucion del sistema \n"<<a<<"x+("<<b<<")y+("<<c<<")=0 \n"<<d<<"x+("<<e<<")y+("<<f<<")=0 \n"<<"es: \n"<< "x= "<<x<<"\n"<<"y= "<<y<<"\n";
+	getch ();
+	return 0;
+}
+void solucion (float a,float b,float c,float d,float e,float f,float &x,float &y)
+{
+	y=(((c*d)-(f*a))/((e*a)-(b*d)));
+	x=(((f*a*b)-(c*d*b))/((e*a*a)-(b*d*a)))-(c/a);
+}
+
+6.	Dada una fecha en forma de día, mes, año; mediante un procedimiento LITERAL convertirla en su equivalente literal. Por ejemplo: la fecha 20, 5, 99 se debe ser convertida e imprimir ’20 de Mayo de 1999’. La llamada para este caso sería LITERAL(20, 5, 99).
+// FUNCIONES 6.cpp : Defines the entry point for the console application.
+// AUTORA: Miriam Villegas	
+// FECHA: 12/11/13
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+
+using namespace std;
+
+void LITERAL (int&mes,int&anio);
+
+void main ()
+{
+	int dia, mes, anio;
+
+	cout<<"ingresar la fecha en numeros, formato Dia/Mes/Anio  :   ";
+	cin>>dia;
+	cout<<"/";
+	cin>>mes;
+	cout<<"/";
+	cin>>anio;
+
+	cout<<"La fecha es:  "<<dia<<" de ";
+	LITERAL(mes,anio);
+
+	getch();
+}
+
+void LITERAL (int&mes,int&anio)
+{
+	char enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre;
+
+	if (mes==1)																	
+		cout<<"enero";
+	else 
+	{	if (mes==2)
+			cout<<"febrero";
+		else
+		{if(mes==3)
+				cout<<"marzo";
+			else
+			{		if(mes==4)
+					cout<<"abril";
+				else
+				{		if(mes==5)
+						cout<<"mayo";
+					else 
+					{		if(mes==6)
+							cout<<"junio";
+						else
+						{	if(mes==7)
+							cout<<"julio";
+						else
+						{if(mes==8)
+							cout<<"agosto";
+						else
+						{	if(mes==9)
+								cout<<"septiembre";
+							else
+							{		if(mes==10)
+									cout<<"octubre";
+								else
+								{		if(mes==11)
+										cout<<"noviembre";
+									else
+									{		if(mes==12)
+											cout<<"diciembre";
+	}}}}}}}}}}}
+
+	cout<<" de ";
+
+	if(anio<100)
+		anio=anio+1900;
+
+	cout<<anio;
+}
+
+7.	Dado un número combinatorio con parámetros n y r, obtener su valor numérico. Un número combinatorio se define de la siguiente forma:
+
+   n   	      n!
+Combi(n, r) =            =  ----------          donde ‘!’ es la función factorial
+		 	   r	   r! (n-r)!
+
+Construir un programa que utilice una función factorial llamada FAC(n), y luego desde el programa principal la llame de la siguiente forma:
+
+		C = FAC(n) / (FAC(r) * FAC(n-r))
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+
+using namespace std;
+
+int fac(int a);
+
+void main()
+{
+	int r,n;
+	cout<<"Ingrese n y r: ";
+	cin>>n;
+	cin>>r;
+	cout<<"Resultado Combinatorio= "<<(fac(n)/(fac(r)*fac(n-r)));
+	getch();
+}
+int fac(int a)
+{
+	int s=1;
+	for(int i=1;i<=a;i++)
+		s=s*i;
+	return s;
+}
+
+8.	Construir un procedimiento para resolver una ecuación cuadrática de la forma ax2 + bx + c = 0, considerando todos los casos; es decir dos raíces reales, dos raíces complejas o una raíz doble.
+#include "stadfx.h"
+#include "conio.h"
+#include "math.h"
+#include <iostream>
+
+int resolver(float a,float b,float c)
+{
+	float d=(b*b)-(4*a*c);
+	if(a==0)
+		cout<<"Solucion unica"<<-c/b;
+	if(d<0)
+	{
+		cout<<"Solucion imaginaria "<<-b/(2*a);
+		cout<<"+i\n"<<sqrt(d*(-1))/(2*a);
+		cout<<"Solucion imaginaria "<<-b/(2*a);
+		cout<<"-i\n"<<sqrt(d*(-1))/(2*a);
+	}
+	if(d>=0)
+	{
+		cout<<"Solucion 1 \n"<<(-b+sqrt(d))/(2*a);
+		cout<<"Solucion 2 "<<(-b-sqrt(d))/(2*a);
+	}
+	return 0;
+}
+int main(void)
+{
+
+	float a,b,c;
+	cout<<"Ingrese los valores a,b,c para ax^2+bx+c\n";
+	cin>>a;
+	cin>>b;
+	cin>>c;
+	resolver(a,b,c);
+	getch();
+	return 0;
+}
+
+9.	Construir una función que lea un valor binario X y devuelva como resultado su equivalente decimal.
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "math.h"
+
+using namespace std;
+
+int convert(int n)
+{
+	float i=0;
+	int c,b,s=0,x=n;
+	while(x!=0)
+	{
+		c=x%10;
+	  x=x/10;
+	  s=s+c*(pow(2,i));
+	  i++;
+	}
+	return s;
+}
+int main(void)
+{
+	int n;
+	cout<<"Ingrese un numero binario: ";
+	cin>>n;
+	cout<<"Su numero en decimal: "<<convert(n);
+	getch();
+	return 0;
+}
+
+
+
+10.	Construir un procedimiento para convertir un número N en su equivalente en números romanos.
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+void unidad(int c)
+{
+	if(c==0)cout<<"";
+	if(c==1)cout<<"I";
+	if(c==2)cout<<"II";
+	if(c==3)cout<<"III";
+	if(c==4)cout<<"IV";
+	if(c==5)cout<<"V";
+	if(c==6)cout<<"VI";
+	if(c==7)cout<<"VII";
+	if(c==8)cout<<"VIII";
+	if(c==9)cout<<"IX";
+}
+void decena(int d)
+{
+	if(d==0)cout<<"";
+	if(d==1)cout<<"X";
+	if(d==2)cout<<"XX";
+	if(d==3)cout<<"XXX";
+	if(d==4)cout<<"IL";
+	if(d==5)cout<<"L";
+	if(d==6)cout<<"LX";
+	if(d==7)cout<<"LXX";
+	if(d==8)cout<<"LXXX";
+	if(d==9)cout<<"XC";
+}
+void convert(int n)
+{
+	int u,d,x=n;
+	u=x%10;
+	x=x/10;
+	d=x%10;
+	decena(d);
+	unidad(u);
+}
+int main(void)
+{
+	int n;
+	cout<<"Ingrese un numero decimal(1 al 99): ";
+	cin>>n;
+	convert(n);
+	getch();
+	return 0;
+}
+
+11.	Construir una función que convierta un número real R de hasta cuatro cifras con dos decimales en su equivalente literal. Por ejemplo: Bs 1560.50, será convertido a ‘un mil quinientos sesenta 50/100 bolivianos’
+
+void convunidades(int u)
+{
+	if(u==1) cout<<y uno ";
+	if(u==2) cout<<y dos ";
+	if(u==3) cout<<"y tres ";
+	if(u==4) cout<<"y cuatro ";
+	if(u==5) cout<<"y cinco ";
+	if(u==6) cout<<"y seis ";
+	if(u==7) cout<<"y siete ";
+	if(u==8) cout<<"y ocho ";
+	if(u==9) cout<<"y nueve ";
+}
+void convdecenas(int u)
+{
+	if(u==1) cout<<"diez ";
+	if(u==2) cout<<"veinte ";
+	if(u==3) cout<<"treinta ";
+	if(u==4) cout<<"cuarenta ";
+	if(u==5) cout<<"cincuenta ";
+	if(u==6) cout<<"sesenta";
+	if(u==7) cout<<"setenta ";
+	if(u==8) cout<<"ochenta";
+	if(u==9) cout<<"noventa ";
+}
+void convcentenas(int u)
+{
+	if(u==1) cout<<"ciento ";
+	if(u==2) cout<<"doscientos ";
+	if(u==3) cout<<"trescientos ";
+	if(u==4) cout<<"cuatroscientos ";
+	if(u==5) cout<<"quinientos ";
+	if(u==6) cout<<"seiscientos";
+	if(u==7) cout<<"setescientos ";
+	if(u==8) cout<<"ochocientos ";
+	if(u==9) cout<<"novecientos ";
+}
+void convmiles(int u)
+{
+	if(u==1) cout<<"mil ";
+	if(u==2) cout<<"dos mil ";
+	if(u==3) cout<<"tres mil ";
+	if(u==4) cout<<"cuatro mil ";
+	if(u==5) cout<<" cinco mil ";
+	if(u==6) cout<<" seis mil ";
+	if(u==7) cout<<" siete mil";
+	if(u==8) cout<<" ocho mil";
+	if(u==9) cout<<" nueve mil";
+}
+void convertirentero(int b)
+{
+	int x=b,u,d,c,m;
+	u=x%10;
+	x=x/10;
+	d=x%10;
+	x=x/10;
+	c=x%10;
+	x=x/10;
+	m=x%10;
+	convmiles(m);
+	convcentenas(c);
+	convdecenas(d);
+	convunidades(u);
+}	
+void convertirdecimas(float d)
+{
+	if(d<0.1) cout<<d*1000);
+	if(d>=0.1)cout<<d*100);
+}
+void separarnumero(float b)
+{
+	float d;
+	int e=b;
+	d=b-e;
+	convertirentero(e);
+	convertirdecimas(d);	
+}
+int main()
+{
+	float n;
+	cout<<"Ingrese numero a convertir(Maximo 4 cifras y 2 decimales): ";
+	cin>>n;
+	separarnumero(n);
+	getch();
+	return 0;
+}
+
+
+12.	Construir una función que redondee un número real R a n decimales.
+
+int main()
+{
+	float d,n,b;
+	cout<<"Ingrese un numero real: ";
+	cin>>n;
+	cout<<"Ingrese cuantos decimales quiere en el nuevo numero: ";
+	cin>>d;
+	d=pow(10,d);
+	cout<<"Numero redondeado es: "<<redondear(n,d);
+	getch();
+
+	return 0;
+}
+
+float redondear(float n, int d)
+{
+	int aux;
+	float c=n;
+	c=c*d;
+	aux=c;
+	c=aux;
+	c=c/d;
+	return c;
+}
+
+
+13.	Construya un procedimiento que calcule los días transcurridos entre dos fechas cualesquiera. Cada fecha está dada en día/mes/año.
+
+#include "stdafx.h"
+#include <iostream>
+ #include "conio.h"
+
+void calculartrans(int d,int m,int a,int d2,int m2,int a2)
+{
+	int ta=0,tm=0,td=0,tt=0;
+	ta=(a2-a)*365;
+	if(m2>m) tm=(m2-m)*30;
+	if(m>m2) tm=(m-m2)*30;
+	if(d2>d) td=(d2-d);
+	if(d>d2) td=(d-d2);
+	tt=ta+td+tm;
+	cout<<Total dias transcurridos "<<tt;
+}
+int main()
+{
+	int d,m,a,d2,m2,a2;
+	cout<<Ingrese dia, mes y año respectivamente: ");
+	cin>>d;
+	cin>>m;
+	cin>>a;
+	cout<<"Ingrese dia, mes y año respectivamente: ";
+	cin>>d2;
+	cin>>m2;
+	cin>>a2;
+	calculartrans(d,m,a,d2,m2,a2);
+	getch();
+	return 0;
+}
+
+
+
