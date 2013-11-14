@@ -1,0 +1,675 @@
+
+
+UPSA
+
+
+
+
+
+
+PRACTICOS DE PROGRAMACION
+
+PARCIAL III
+
+PRACTICO 10
+
+
+
+
+Docente: Karem Infantas
+
+
+
+INTEGRANTES:
+
+
+
+
+
+
+
+Valeria Araujo                                                   2013115148
+Juan Francisco Cabrera                                           2013116551
+Miriam Villegas                                                  2013115474
+
+
+	PRACTICA Nº 10
+ARREGLOS (VECTORES )
+
+1.	Hacer un programa para sacar el máximo valor de un vector de valores ya sean reales o enteros.
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+
+Using namespace std,
+
+void leer v(int &v,int n)
+{
+	for(int i=0;i<n;i++)
+	{
+		
+		Cout<<"Ingrese valor para vector[]:",i;
+		Cin>> v[i];
+	}
+}
+int sacarmenor(int &v, int n)
+{
+	int m;
+	m=v[0];
+	for (int i=1;i<n;i++)
+	{
+		if (v[i]<m) m=v[i];
+	}
+	return m;
+}
+int main(void)
+{
+	int n;
+	int a[tv];
+	cout>>"Ingrese tamaño del vector:";
+	cin<<&n;
+	leer v(a,n);
+	cout>>"El menor es %d",sacarmenor(a,n);
+	getch();
+
+	return 0;
+}
+
+2.	Hacer un programa para sacar el mínimo valor de un vector de valores ya sean reales o enteros.
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+
+Using namespace std,
+
+void leer v(int &v,int n)
+{
+	for(int i=0;i<n;i++)
+	{
+		
+		Cout>>"Ingrese valor para vector[]:",i);
+		Cin<< &v[i]);
+	}
+}
+int sacarmayor(int v, int n)
+{
+	int m;
+	m=v[0];
+	for (int i=1;i<n;i++)
+	{
+		if (v[i]>m) m=v[i];
+	}
+	return m;
+}
+int main(void)
+{
+	int n;
+	int a[tv];
+	cout>>"Ingrese tamaño del vector:";
+	cin<< &n);
+	leer v(a,n);
+	cout>>"El mayor es %d",sacarmayor(a,n);
+	getch();
+	return 0;
+}
+
+3.	Hacer un programa para sacar el promedio de valores de un vector.
+
+
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+
+Using namespace std,
+
+ void leer v(int &v,int n)
+{
+	for(int i=0;i<n;i++)
+	{
+		Cout>>"Ingrese valor para vector[]:",i;
+		Cin<< &v[i]);
+	}
+}
+float promediarv(int &v,int n)
+{
+	float s=0;
+	for(int i=0;i<n;i++)
+	{
+		s=s+v[i];
+		if(i==(n-1)) s=s/n;
+	}
+	return s;
+}
+int main(void)
+{
+	int a[tv],n;
+	cout>>"Ingrese tamaño del vector:";
+	cin<< &n;
+	leer v(a,n);
+	cout>>"El promedio de los numeros ingresados es: %10.3f",promediarv(a,n);
+	getch();
+	return 0;
+}
+
+4.	Hacer un programa para revertir la lista de valores de un vector, en otro vector, es decir se debe mantener el vector original.
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+
+Using namespace std,
+
+void leer v(int &v,int n)
+{
+	for(int i=0;i<n;i++)
+	{
+		Cout>> "Ingrese valor para vector[%d]:",i;
+		Cin<< &v[i];
+	}
+}
+void swap(int &v,int &v2,int n)
+{
+	for(int i=0;i<n;i++)
+	{
+		v2[i]=v[n-1-i];
+	}
+}
+void mostrarv(int &v,int n)
+{
+	for(int i=0;i<n;i++)
+	{
+		Cout>> "V[%d]=%d\n",i,v[i];
+	}
+}
+int main(void)
+{
+	int a[tv],b[tv],n;
+	cout>> "Ingrese tamaño del vector:";
+	cin<< &n;
+	leer v(a,n);
+	swap(a,b,n);
+	mostrarv(b,n);
+	getch();
+	return 0;
+}
+5.	Hacer un programa para determinar si un vector es capicúa, es decir, si el vector revertido es igual al inicial, se dice que el vector es capicúa.
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+ 
+Using namespace std;
+void leerv(int &v,int n)
+{
+	for(int i=0;i<n;i++)
+	{
+		Cout>> "Ingrese valor para vector[%d]:",i;
+		Cin<< &v[i];
+	}
+}
+void swap(int &v,int n)
+{
+	int aux;
+	for(int i=0;i<n/2;i++)
+	{
+		aux=v[i];
+		v[i]=v[n-1-i];
+		v[n-1-i]=aux;
+	}
+}
+void copiarv(int &v,int &v2, int n)
+{
+	for(int i=0;i<n;i++)
+	{
+		v2[i]=v[i];
+	}
+}
+int compararv(int &v,int &v2,int n)
+{
+	int r=0;
+	for(int i=0;i<n;i++)
+	{
+		if(v2[i]!=v[i])
+		{
+			r=1;
+		}
+
+	}
+	return r;
+}
+int main(void)
+{
+	int a[tv],b[tv],n;
+	cout>> "Ingrese tamaño del vector:";
+	cin<< &n;
+	leer v(a,n);
+	copiar v(a,b,n);
+	swap(a,n);
+	comparar v(a,b,n);
+	if (compararv(a,b,n)==0) << cout <<"Es capicua.";
+	else <<cout<<("No es capicua.");
+	getch();
+	return 0;
+}
+
+
+6.	Sacar el promedio de cada tres valores consecutivos en un vector.
+P1= A1 + A2 + A3 
+P2= A2 + A3 + A4
+P3= A3 + A4 + A5
+……………………
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+ 
+Using namespace std;
+void leer v(int &v,int n)
+{
+	for(int i=0;i<n;i++)
+	{
+		Cout>>"Ingrese valor para vector[%d]:",i;
+		Cin<< &v[i]);
+	}
+}
+int sacarpromedio(int &v,int n)
+{
+	float pr;
+	if (n<3)
+	{
+		Cout>> "No hay suficientes datos:";
+		return 0;
+	}
+	for(int i=0;i<(n+1)/2;i++)
+	{
+		if(n==3) 
+		{
+			pr=(v[i]+v[i+1]+v[i+2])/3;
+			cout<< "P%d: %f\n",i+1,pr;
+			break;
+		}
+		else
+		{
+			pr=(v[i]+v[i+1]+v[i+2])/3;
+			cout<< "P%d: %10.2f\n",i+1,pr;
+		}
+		
+	}
+	return 0;
+}
+int main(void)
+{
+	int a[tv],n;
+	cout<<"Ingrese tamaño del vector(3 o mayor): ";
+	cin<< &n;
+	leerv(a,n);
+	sacarpromedio(a,n);
+	getch();
+	return 0;
+}
+
+
+7.	Dado un número entero, el programa debe devolver el valor escrito literalmente. Por ejemplo si se da 12 debe devolver 'DOCE'. Hacer esto hasta el valor 20. ¿ Es posible generalizar para 30, 31, 32, ....100,101,... etc. ?.
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+ 
+Using namespace std;
+
+void numeropeq(int u)
+{
+	if(u==1)cout<<"uno ";
+	if(u==2) cout<<"dos ";
+	if(u==3) cout<<"tres ";
+	if(u==4) cout<<"cuatro ";
+	if(u==5) cout<<"cinco ";
+	if(u==6) cout<<"seis ";
+	if(u==7) cout<<"siete ";
+	if(u==8) cout<<"ocho ";
+	if(u==9) cout<<"nueve ";
+	if(u==10) cout<<"diez";
+	if(u==11) cout<<"once";
+	if(u==12) cout<<"doce";
+	if(u==13) cout<<"trece";
+	if(u==14) cout<<"catorce";
+	if(u==15) cout<<"quince";
+	if(u==16) cout<<"dieciseis";
+	if(u==17) cout<<"diecisiete";
+	if(u==18) cout<<"dieciocho";
+	if(u==19) cout<<"diecinueve";
+	if(u==20) cout<<"veinte";     
+	if(u==21) cout<<"veintiuno";  
+	if(u==22) cout<<"veintidos";  
+	if(u==23) cout<<"veintitres"; 
+	if(u==24) cout<<"veinticuatr";
+	if(u==25) cout<<"veinticinco";
+	if(u==26) cout<<"veintiseis"; 
+	if(u==27) cout<<"veintisiete";
+	if(u==28) cout<<"veintiocho ";
+	if(u==29) cout<<"veintinueve";
+}
+void numerog(int u)
+{
+	int aux,aux2;
+	aux=u/10;
+	aux2=u%10;
+	if(aux==3) cout<<"treinta";
+	if(aux==4) cout<< "cuarenta";
+	if(aux==5) cout<< "cincuenta";
+	if(aux==6) cout<< "sesenta";
+	if(aux==7) cout<< "setenta";
+	if(aux==8) cout<< "ochenta";
+	if(aux==9) cout<< "noventa";
+	if(aux2!=0)cout<< " y ";
+	numeropeq(aux2);
+}
+int main(void)
+{
+	inicio:
+	int n;
+	cout>>"\nIngrese numero: ";
+	cin<< &n;
+	if(n<30) numeropeq(n);
+	else numerog(n);
+	goto inicio;
+	return 0;
+}
+
+8.	Dado un vector A de n números reales, obténgase la diferencia más grande entre dos elementos consecutivos de este vector.
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+ 
+Using namespace std;
+
+void leerv(int &v,int n)
+{
+	for(int i=0;i<n;i++)
+	{
+		Cout>> "Ingrese valor para vector[%d]:",i;
+		Cin<< &v[i];
+	}
+}
+void diferencia(int &v,int n)
+{
+	int dif,aux,aux2;
+	for(int i=0;i<n-1;i++)
+	{
+		if(i==0) 
+		{
+			dif=abs(v[i]-v[i+1]);
+			aux=v[i];
+			aux2=v[i+1];
+		}
+		else 
+		{
+			if (abs(v[i]-v[i+1])>dif) 
+			{
+				dif=abs(v[i]-v[i+1]);
+				aux=v[i];
+				aux2=v[i+1];
+			}
+		}
+	}
+	Cout>> "La mayor diferencia es de %d entre los elementos [%d] y [%d].",dif,aux,aux2);
+}
+int main(void)
+{
+	int a[tv],n;
+	cout>>"Ingrese tamaño del vector: ";
+       cin<< &n;
+	leer v(a,n);
+    diferencia(a,n);
+	getch();
+	return 0;
+}
+
+9.	Concatenar dos vectores de tamaño n y m respectivamente. [a1,a2,......an;]  [b1,b2,....bm]; concatenado resulta [a1,a2,......an,b1,b2,....bm] con n+m elementos.
+ #include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+ 
+Using namespace std;
+
+void leerv(int &v,int n)
+{
+	for(int i=0;i<n;i++)
+	{
+		
+		Cout>> "Ingrese valor para vector[%d]:",i;
+		Cin<< &v[i];
+	}
+}
+void concatenarv(int &v, int v2,int vs,int n,int n2)
+{
+	for(int i=0;i<n;i++)
+	{
+		vs[i]=v[i];
+	}
+	for(int i=n;i<n+n2;i++)
+	{
+		vs[i]=v2[i-n];
+	}
+}
+void mostrarv(int v,int n)
+{
+	for(int i=0;i<n;i++)
+		cout>> "V[%d]=%d\n",i,v[i];
+}
+int main(void)
+{
+	int n,m;
+	int a[tv],b[tv],c[tv];
+	cout>> "Ingrese tamaño del vector: ";
+	cin<< &n;
+	cout>>"\nIngrese tamaño del segundo vector: ";
+       cin<< &m;
+	leer v(a,n);
+	leerv(b,m);
+	concatenarv(a,b,c,n,m);
+	mostrarv(c,n+m);
+	getch();
+	return 0;
+}
+
+10.	Intercalar dos vectores A y B clasificados ascendentemente de tamaño n y m respectivamente en uno solo de tal forma que el resultado sea un vector clasificado.
+11.	Hacer un programa que permita contar número de valores negativos, positivos y ceros que hay en un vector.
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+ 
+Using namespace std;
+
+void leerv(int &v,int n)
+{
+	for(int i=0;i<n;i++)
+	{
+		
+		Cout<<"Ingrese valor para vector[%d]:",i;
+		Cin>> &v[i];
+	}
+}
+void contarv(int &v,int n)
+{
+	int ps=0,ng=0,ce=0;
+	for(int i=0;i<n;i++)
+	{
+		if(v[i]>0) ps++;
+		if(v[i]<0)ng++;
+		if(v[i]==0) ce++;
+	}
+	Cout<<"Hay %d valores positivos en el vector.\n",ps;
+	Cout<<"Hay %d valores negativos en el vector.\n",ng;
+	Cout<<"Hay %d ceros en el vector.\n",ce;
+}
+int main(void)
+{
+	int n;
+	int a[tv];
+	cout<<"Ingrese tamaño del vector:";
+	cin>> &n;
+	leerv(a,n);
+	contarv(a,n);
+	getch();
+	return 0;
+}
+
+
+12.	Hacer un programa para eliminar los  números duplicados de un vector.
+13.	Hacer un programa para revertir una lista en el mismo vector.
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+ 
+Using namespace std;
+
+void leerv(int &v,int n)
+{
+	for(int i=0;i<n;i++)
+	{
+		Cout<< "Ingrese valor para vector[%d]:",i;
+		Cin>> &v[i];
+	}
+}
+void swap(int &v,int n)
+{
+	int aux;
+	for(int i=0;i<n/2;i++)
+	{
+		aux=v[i];
+		v[i]=v[n-1-i];
+		v[n-1-i]=aux;
+	}
+}
+void mostrarv(int*v,int n)
+{
+	for(int i=0;i<n;i++)
+	{
+		Cout>> "V[%d]=%d\n",i,v[i];
+	}
+}
+int main(void)
+{
+	int a[tv],n;
+	cout>>"Ingrese tamaño del vector: ";
+	cin<< &n;
+	leerv(a,n);
+	swap(a,n);
+	mostrarv(a,n);
+	getch();
+	return 0;
+}
+
+
+14.	Hacer un programa para clasificar una lista de valores (entero o reales) en orden ascendente.
+
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+ 
+Using namespace std;
+
+void mostrar(int*v,int n)
+{
+	for(int i=0;i<n;i++)
+	{
+		Cout>> v[i];
+	}
+}
+void leerv(int &v,int n)
+{
+	for(int i=0;i<n;i++)
+	{
+		
+		Cout>> "Ingrese valor para vector[%d]:",i;
+		Cin<< &v[i];
+	}
+}
+void ordenarv(int &v,int n)
+{
+	int aux,m;
+	for (int i=0;i<n;i++)
+	{
+		
+		m=v[i];
+		aux=i;
+		for(int c=i;c<n;c++)
+		{
+			if(v[c]>m) 
+			{
+				m=v[c];
+				aux=c;
+			}
+		}
+		v[aux]=v[i];
+		v[i]=m;
+	}
+}
+int main(void)
+{
+	int n, a[tv];
+	cout>> "Ingrese el tamaño del vector: ";
+	cin<< &n;
+	leerv(a,n);
+	ordenarv(a,n);
+	mostrar(a,n);
+	getch();
+	return 0;
+}
+
+
+15.	Un vector tiene la lista de alumnos y otro vector tiene las notas. Hacer un programa para obtener las tres mejores notas. Sugerencia: Clasificar el vector en orden descendente y luego listar los tres primeros, hay que tener cuidado cuando se intercambia los elementos del vector de alumnos también se debe intercambiar las notas.
+16.	Confeccionar en un menú para manejar alumnos con las siguiente funciones: 1) Ingresar un alumno y su nota 2) Listar los alumnos 3) Ordenar alfabéticamente 4) Sacar la mejor nota 5) Sacar el promedio de notas.
+17.	Generar los primeros n números de Fibonacci en un vector.
+
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+ 
+Using namespace std;
+
+void generar(int &v,int n)
+{
+	int a=0,b=1;
+	for (int i=0;i<n;i++)
+	{
+		if (i==0) 
+		{
+			v[i]=a;
+		}
+		if (i==1) v[i]=b;
+		if (i>1) 
+		{
+			v[i]=a+b;
+			a=b;
+			b=v[i];
+		}
+	}
+}
+void mostrar(int &v,int n)
+{
+	for(int i=0;i<n;i++)
+	{
+		Cout>> v[i]);
+	}
+}
+
+int main(void)
+{
+	int n, a[tv];
+	cout>> Ingrese la cantidad de numeros que quiere generar en fibonacci:";
+	cin<< &n;
+	generar(a,n);
+	mostrar(a,n);
+	getch();
+	return 0;
+}
+
+
+
+
