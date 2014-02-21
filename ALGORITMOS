@@ -1,0 +1,93 @@
+TAREA 1
+//verifica si los digitos van de menor a mayor
+
+#include <iostream>
+#include "conio.h"
+
+using namespace std;
+
+int main ()
+{
+	int n,n1,ultdig,antdig,band=0;
+
+	cout<<"ingrese un numero: ";
+	cin>>n;
+
+	while (n>0)
+	{
+		ultdig=n%10;
+		n1=n/10;
+		antdig=n1%10;
+		if(antdig>ultdig)
+		{
+			band=1;
+		}
+		n=n/10;
+
+	}
+
+	if (band==0)
+		cout<<"el numero esta ordenado de menor a mayor";
+	else
+		cout<<"el numeo no esta ordenado de menor a mayor";
+
+	getch();
+
+	return 0;
+
+}
+#include <iostream>
+#include "conio.h"
+
+using namespace std;
+
+int contarDigitos(int n)
+{
+	int d=0;
+	while(n>0)
+	{
+		n=n/10;
+		d++;
+	}
+
+	return(d);
+}
+
+int invertir(int n)
+{
+	int d,nnro=0;
+	while(n>0)
+	{
+		d=n%10;
+		nnro=nnro*10+d;
+		n=n/10;
+	}
+	return (nnro);
+}
+
+int elimDigPar(int n)
+{
+	int d,nnro=0,nnro2;
+
+	while(n>0)
+	{
+		d=n%10;
+			if(d%2 != 0)
+			{
+				nnro=nnro*10+d;
+			}
+			n=n/10;}
+
+	return(invertir(nnro));
+}
+
+int reemplazar(int n, int dig)
+{	int nnro=0,d,n1,d1,c=0;
+	d1=n%10;
+	if(d1==dig){
+		n1=n;
+		while(n1>0)&&(d1==dig)
+		{
+			d1=n1%10;
+
+	
