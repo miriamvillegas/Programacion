@@ -89,5 +89,59 @@ int reemplazar(int n, int dig)
 		while(n1>0)&&(d1==dig)
 		{
 			d1=n1%10;
+			while(n>0)
+	{
+		d=n%10;
+		if(d==dig)
+		{
+			d=0;
+		}
+		nnro=nnro*10+d;
+		n=n/10;
+	}
+
+	return();
+}
+
+
+	
+
+int main ()
+{
+	int n,op,d;
+	cout<<"ingrese un numero natural: ";
+	cin>>n;
+	do{
+		cout<< endl << "\n      ***MENU***\n";
+		cout<< endl << "\n 1. Cantidad de Digitos";
+		cout<< endl << "\n 2. Invertir";
+		cout<< endl << "\n 3. Eliminar Digitos Pares";
+		cout<< endl << "\n 4. Reemplazar algun digito por 0";
+		cout<< endl << "\n 0. Salir";
+		cout<< endl << "\n\n Seleccione una opcion: ";
+			cin>>op;
+		switch (op)
+		{
+		case 1: cout<<"\n el numero tiene: "<<contarDigitos(n)<<" digitos\n";
+			getch();
+			break;
+		case 2: cout<<"\n el numero invertido es: "<<invertir(n)<<"\n";
+			getch();
+			break;
+		case 3: cout<<"\n el nuevo numero es: "<<elimDigPar(n)<<"\n";
+			getch();
+			break;
+		case 4: cout<<"\n Selecciones un digito a ser reemplazado por 0: ";
+			cin>>d;
+			cout<<"\n el nuevo numero es: "<<reemplazar(n,d);
+			getch();
+			break;
+		}
+	}
+	while (op != 0);
+	
+	
+	return 0;
+}
 
 	
