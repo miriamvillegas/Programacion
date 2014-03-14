@@ -1,0 +1,122 @@
+#include <iostream>
+#include <conio.h>
+#include <string.h>
+using namespace std;
+
+struct amigo
+{
+	char nombre[30];
+	int edad;
+	char sexo;
+};
+
+void cargar(amigo vec[],int n)
+{int i;
+for (i=0;i<n;i++)
+	{cout<<"Ingrese datos del amigo "<<i+1<<" : "<<endl; 
+	cout<<"Nombre? ";
+	do
+	{gets(vec[i].nombre);}
+	while(strlen(vec[i].nombre)==0);
+	cout<<"Edad? ";
+	cin>>vec[i].edad;
+	cout<<"Sexo? [F/M] ";
+	cin>>vec[i].sexo;}
+}
+
+void mostrar(amigo vec[], int n)
+{int i;
+for (i=0;i<n;i++)
+{cout<<"\n Datos Amigo 1: "<<vec[i].nombre<<"  "<<vec[i].edad<<"  "<<vec[i].sexo;}
+}
+
+int main()
+{amigo vectorAmigos[20];
+int nroAmigos;
+cout<<"Introducir nro de amigos : ";
+cin>>nroAmigos;
+cargar(vectorAmigos,nroAmigos);
+mostrar(vectorAmigos,nroAmigos);
+getch();
+return 0;
+}
+
+----------------------------------------------------------------------
+
+#include <iostream>
+#include "conio.h"
+#include <string.h>
+
+using namespace std;
+
+struct tipoX
+{	char cad1[15];
+	char cad2[15];
+	char cad3[15];
+	char cad4[15];
+};
+
+struct tipoY{
+	char cadena[40];
+};
+
+void cargar(tipoX vec[],int n)
+{int i;
+for (i=0;i<n;i++)
+{	cout<<"\n Introducir la 1º cadena del vector "<<i+1<<": ";
+	do{
+		gets(vec[i].cad1);
+	}while(strlen(vec[i].cad1)==0);
+	vec[i].cad2[0]='\0';
+	vec[i].cad3[0]='\0';
+	vec[i].cad4[0]='\0';
+}
+}
+
+void copiar(tipoX vec[],int n)
+{int i;
+for(i=0;i<n;i++){
+	strcpy(vec[i].cad2,vec[i].cad1);
+	strcpy(vec[i].cad3,vec[i].cad1);
+	strcpy(vec[i].cad4,vec[i].cad1);
+}
+}
+
+void mostrar(tipoX vec[], int n)
+{int i;
+cout<<"\nLos datos son ---> ";
+for(i=0;i<n;i++)
+{cout<<endl<<endl<<vec[i].cad1<<" "<<vec[i].cad2<<" "<<vec[i].cad3<<" "<<vec[i].cad4;}
+}
+
+void concatena(tipoX vec[],int n,tipoY vecConca[]){
+	int i;
+	for(i=0;i<n;i++){
+		vecConca[i].cadena[0] = '\0';
+		strcat(vecConca[i].cadena,vec[i].cad1);
+		strcat(vecConca[i].cadena,vec[i].cad2);
+		strcat(vecConca[i].cadena,vec[i].cad3);
+		strcat(vecConca[i].cadena,vec[i].cad4);
+	}
+}
+void mostrarY(tipoY vec[], int n)
+{int i;
+cout<<"\nLos datos son ---> ";
+for(i=0;i<n;i++)
+{cout<<endl<<vec[i].cadena;}
+}
+	
+int main()
+{tipoX vectorDeCadenas[20];
+tipoY vectorConcatenaCadenas[20];
+int nroElem;
+cout<<"Introducir nro de elementos: ";
+cin>>nroElem;
+cargar(vectorDeCadenas,nroElem);
+copiar(vectorDeCadenas,nroElem);
+mostrar(vectorDeCadenas,nroElem);
+concatena(vectorDeCadenas,nroElem,vectorConcatenaCadenas);	
+mostrarY(vectorConcatenaCadenas,nroElem);
+getch();
+return 0;
+}
