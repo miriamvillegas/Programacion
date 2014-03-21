@@ -1,0 +1,120 @@
+#include <iostream>
+#include "conio.h"
+#include "math.h"
+
+using namespace std;
+struct tvector{
+	int k;
+	int vecElem[30];
+};
+
+void cargar(tvector vec[], int n){
+	int i,j;
+	for(i=0;i<n;i++){
+		cout<<"Numero de Elementos del subvector "<<i+1<<": ";
+		cin>>vec[i].k;
+		for(j=0;j<vec[i].k;j++){
+			cout<<"Elemento: ";
+			cin>>vec[i].vecElem[j];
+		}
+	}
+}
+
+void mostrarv(tvector vec[], int n){
+	int i,j;
+	for(i=0;i<n;i++){
+	cout<<endl<<endl<<"El vector "<<i+1<<" es ------->"<<endl;
+	for(j=0;j<vec[i].k;j++){
+		cout<<vec[i].vecElem[j]<<"  ";
+	}
+	}
+}
+void mostrar(int vec[], int n){
+	int i;
+	for(i=0;i<n;i++){
+	cout<<endl<<endl<<"V["<<i<<"]"<<endl;
+	cout<<vec[i];
+	}
+}
+bool verifPrimo(int n){
+	int i;
+	for(i=2;i<n;i++){
+		if(n%i==0){
+			return(false);
+		}
+	}
+	return(true);
+}
+int	sumaPrimos(int n){
+	int d,s;
+	while(n>0){
+		d=n%10;
+		if(verifPrimo(d)){
+			s=s+d;
+		}
+		n=n/10;
+	}
+	return(s);
+}
+int	sumaNoPrimos(int n){
+	int d,s;
+	while(n>0){
+		d=n%10;
+		if(verifPrimo(d)==false){
+			s=s+d;
+		}
+		n=n/10;
+	}
+	return(s);
+}
+
+int sumarDigPrimosVector(tvector vec[],int n){
+	int i,j,s=0;
+	for(i=0;i<n;i++){
+		for(j=0;j<vec[i].k;j++){
+			s=s+sumaPrimos(vec[i].vecElem[j]);
+		}
+	}
+	return(s);
+}
+
+int invertir(int n){
+	int d,nnro=0,i=0;
+	while(n>0){
+		d=n%10;
+		nnro=(nnro*10)+d;
+		i++;
+		n=n/10;
+	}
+	return(nnro);
+}
+
+void sumaDeNoPrimosInvertido(tvector v1[],int n,int v2[]){
+	int i,j;
+	for(i=0;i<n;i++){
+		v2[i]=0;
+		for(j=0;j<v1[i].k;j++){
+			v2[i]=v2[i] + sumaNoPrimos(v1[i].vecElem[j]);
+		}
+	}
+	for(i=0;i<n;i++){
+		v2[i]=invertir(v2[i]);
+	}
+}
+
+int main(){
+	int n,s, nuevovec[50];
+	tvector V[50];
+	cout<<"Ingrese el tamano del vector principal: ";
+	cin>>n;
+	cargar(V,n);
+	mostrarv(V,n);
+	s=sumarDigPrimosVector(V,n);
+	cout<<endl<<"La suma de los digitos primos es: "<<s;
+	sumaDeNoPrimosInvertido(V,n,nuevovec);
+	mostrar(nuevovec,n);
+	getch();
+	return 0;
+}
+
+
